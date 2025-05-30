@@ -19,5 +19,5 @@ docker build -t deliveries .
 # Roda o container
 Write-Output "Subindo container na porta 8080..."
 # docker run -p 8080:8080 deliveries
-docker-compose up --build
+docker-compose up -d --build
 
