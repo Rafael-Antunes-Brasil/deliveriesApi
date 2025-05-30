@@ -1,0 +1,23 @@
+services:
+  api:
+    image: deliveries
+    ports:
+      - "8080:8080"
+    depends_on:
+      - rabbit-mq
+      - postgresql
+  rabbit-mq:
+    image: rabbitmq:3-management
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 5s
+      timeout: 5s
+      retries: 3
+  postgresql:
+    image: postgres:16.4
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=deliveries
+    ports:
+      - "5432:5432"
