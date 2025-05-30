@@ -18,9 +18,9 @@ import jakarta.persistence.Table;
 public class CarrierEntity {
 
     @Id
-    @GeneratedValue(generator = "carrier_id")
-    @GenericGenerator(name = "carrier_id", strategy = "carrier_id")
-    @Column(columnDefinition = "carrier_id", updatable = false, nullable = false)
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "id_carrier", updatable = false, nullable = false)
     private UUID idCarrier;
 
     @Column(name = "name", nullable = false)
@@ -140,14 +140,3 @@ public class CarrierEntity {
         return true;
     }
 }
-
-/*
- * 
-
-Transportadora:
-ID da Transportadora
-Nome da Transportadora
-CNPJ
-Contatos (telefone, e-mail)
-Parâmetros de Integração (API, etc.)
- */

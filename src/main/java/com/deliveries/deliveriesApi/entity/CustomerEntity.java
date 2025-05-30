@@ -20,9 +20,9 @@ import jakarta.persistence.Table;
 public class CustomerEntity {
 
     @Id
-    @GeneratedValue(generator = "customer_id")
-    @GenericGenerator(name = "customer_id", strategy = "customer_id")
-    @Column(columnDefinition = "customer_id", updatable = false, nullable = false)
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "id_customer", updatable = false, nullable = false)
     private UUID idCustomer;
 
     @Column(name = "name", nullable = false)
@@ -122,11 +122,11 @@ public class CustomerEntity {
         if (this == obj) {
             return true;
         }
-        
+
         if (obj == null) {
             return false;
         }
-        
+
         if (getClass() != obj.getClass()) {
             return false;
         }
@@ -152,14 +152,3 @@ public class CustomerEntity {
         return true;
     }
 }
-
-
-/*
- * ID do Cliente: Um identificador único para cada cliente (geralmente um número sequencial).
-Nome Completo/Razão Social: Nome completo do cliente individual ou nome da empresa.
-CPF/CNPJ: Número de identificação do cliente (CPF para pessoas físicas, CNPJ para pessoas jurídicas).
-Dados de Contato:
-E-mail: Endereço de e-mail do cliente.
-Telefone: Número de telefone de contato.
-Endereço
- */

@@ -21,9 +21,9 @@ import jakarta.persistence.Table;
 public class OrderItensEntity {
 
     @Id
-    @GeneratedValue(generator = "order_item_id")
-    @GenericGenerator(name = "order_item_id", strategy = "order_item_id")
-    @Column(columnDefinition = "order_item_id", updatable = false, nullable = false)
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "id_order_item", updatable = false, nullable = false)
     private UUID idOrderItem;
 
     @Column(name = "name", nullable = false)

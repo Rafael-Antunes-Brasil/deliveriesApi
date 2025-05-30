@@ -22,9 +22,9 @@ import jakarta.persistence.Table;
 public class DeliveryEntity {
 
     @Id
-    @GeneratedValue(generator = "delivery_id")
-    @GenericGenerator(name = "delivery_id", strategy = "delivery_id")
-    @Column(columnDefinition = "delivery_id", updatable = false, nullable = false)
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "id_delivery", updatable = false, nullable = false)
     private UUID idDelivery;
 
     @Column(name = "order_id", nullable = false)
@@ -167,17 +167,3 @@ public class DeliveryEntity {
         return true;
     }
 }
-
-
-/*
- * 
-Entrega:
-ID da Entrega
-ID do Pedido (referência à entidade de Pedido)
-ID da Transportadora (referência à entidade de Transportadora)
-ID do Entregador (referência à entidade de Entregador)
-Status da Entrega (referência à entidade de Status da Entrega)
-Data e Hora da Entrega (prevista e/ou real)
-Código de Rastreamento (se aplicável)
-Observações sobre a Entrega
- */

@@ -15,9 +15,9 @@ import jakarta.persistence.Table;
 public class AddressEntity {
 
     @Id
-    @GeneratedValue(generator = "address_id")
-    @GenericGenerator(name = "address_id", strategy = "address_id")
-    @Column(name = "address_id", columnDefinition = "address_id", updatable = false, nullable = false)
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "address_id", updatable = false, nullable = false)
     private UUID idAddress;
 
     @Column(name = "street_address", nullable = false)
@@ -127,17 +127,3 @@ public class AddressEntity {
         this.longitude = longitude;
     }
 }
-
-/*
- * Endereço:
-ID do Endereço
-Logradouro
-Número
-Complemento
-Bairro
-Cidade
-Estado
-CEP
-Latitude e Longitude (para otimização de rotas)
-
- */

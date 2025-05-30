@@ -18,9 +18,9 @@ import jakarta.persistence.Table;
 public class DeliveryStatusEntity {
 
     @Id
-    @GeneratedValue(generator = "delivery_status_id")
-    @GenericGenerator(name = "delivery_status_id", strategy = "delivery_status_id")
-    @Column(columnDefinition = "delivery_status_id", updatable = false, nullable = false)
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "id_status", updatable = false, nullable = false)
     private UUID idStatus;
 
     @Column(name = "name", nullable = false)
@@ -99,11 +99,3 @@ public class DeliveryStatusEntity {
         return true;
     }
 }
-
-/*
- * 
-Status da Entrega:
-ID do Status
-Nome do Status (ex: "Pendente", "Em Roteiro", "Em Trânsito", "Entregue", "Cancelado")
-Descrição do Status (opcional)
- */

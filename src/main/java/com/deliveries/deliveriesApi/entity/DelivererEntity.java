@@ -20,9 +20,9 @@ import jakarta.persistence.Table;
 public class DelivererEntity {
 
     @Id
-    @GeneratedValue(generator = "deliverer_id")
-    @GenericGenerator(name = "deliverer_id", strategy = "deliverer_id")
-    @Column(columnDefinition = "deliverer_id", updatable = false, nullable = false)
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "id_deliverer", updatable = false, nullable = false)
     private UUID idDeliverer;
 
     @Column(name = "deliverer_name", nullable = false)
@@ -165,15 +165,3 @@ public class DelivererEntity {
         return true;
     }
 }
-
-/*
- * Entregador:
-ID do Entregador
-Nome do Entregador
-CPF/CNPJ (se for entregador pessoa jurídica)
-Contatos (telefone, e-mail)
-Endereço (opcional)
-Veículo de Entrega (motocicleta, carro, etc.)
-Status de Disponibilidade
-
- */

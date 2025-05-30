@@ -23,9 +23,9 @@ import jakarta.persistence.Table;
 public class OrderEntity {
 
     @Id
-    @GeneratedValue(generator = "order_id")
-    @GenericGenerator(name = "order_id", strategy = "order_id")
-    @Column(columnDefinition = "order_id", updatable = false, nullable = false)
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "id_order", updatable = false, nullable = false)
     private UUID idOrder;
 
     @Column(name = "date_create", nullable = false)
@@ -38,10 +38,9 @@ public class OrderEntity {
     private Number orderTotal;
 
     @ManyToOne
-    @JoinColumn(name = "address_id", nullable = false)
     private AddressEntity address_id;
 
-    @OneToMany(mappedBy = "order_itens")
+    @OneToMany(mappedBy = "order")
     private List<OrderItensEntity> order_itens;
 
     @ManyToOne
@@ -156,14 +155,3 @@ public class OrderEntity {
         return true;
     }
 }
-
-/*
- * Pedido:
-ID do Pedido
-Data do Pedido
-Itens do Pedido (com referência à entidade de Produtos)
-Cliente (com referência à entidade de Cliente)
-Forma de Pagamento
-Total do Pedido
-Endereço de Entrega (com referência à entidade de Endereço)
- */
