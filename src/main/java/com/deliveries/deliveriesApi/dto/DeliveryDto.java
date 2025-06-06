@@ -6,13 +6,13 @@ import java.util.UUID;
 import org.springframework.beans.BeanUtils;
 
 import com.deliveries.deliveriesApi.entity.DeliveryEntity;
-import com.deliveries.deliveriesApi.enums.StatusEntrega;
+import com.deliveries.deliveriesApi.enums.DeliveryStatus;
 
 public class DeliveryDto {
 
     private UUID id;
     private Integer pedidoId;
-    private StatusEntrega status;
+    private DeliveryStatus status;
     private Date dateCreate;
     private Date sendingData;
     private Date deliveryDate;
@@ -43,11 +43,11 @@ public class DeliveryDto {
         this.pedidoId = pedidoId;
     }
 
-    public StatusEntrega getStatus() {
+    public DeliveryStatus getStatus() {
         return status;
     }
 
-    public void setStatus(StatusEntrega status) {
+    public void setStatus(DeliveryStatus status) {
         this.status = status;
     }
 

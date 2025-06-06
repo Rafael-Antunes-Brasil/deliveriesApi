@@ -1,6 +1,6 @@
 package com.deliveries.deliveriesApi.enums;
 
-public enum StatusEntrega {
+public enum DeliveryStatus {
     PENDENTE,
     EM_ROTA,
     ENTREGUE,

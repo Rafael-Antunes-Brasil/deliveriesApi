@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UuidGenerator;
 import org.springframework.beans.BeanUtils;
 
 import com.deliveries.deliveriesApi.dto.OrderDto;
@@ -24,7 +24,7 @@ public class OrderEntity {
 
     @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @UuidGenerator
     @Column(name = "id_order", updatable = false, nullable = false)
     private UUID idOrder;
 

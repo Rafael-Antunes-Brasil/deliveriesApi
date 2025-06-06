@@ -2,7 +2,10 @@ package com.deliveries.deliveriesApi.entity;
 
 import java.util.UUID;
 
-import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UuidGenerator;
+import org.springframework.beans.BeanUtils;
+
+import com.deliveries.deliveriesApi.dto.AddressDto;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,7 +19,7 @@ public class AddressEntity {
 
     @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @UuidGenerator
     @Column(name = "address_id", updatable = false, nullable = false)
     private UUID idAddress;
 
@@ -46,6 +49,14 @@ public class AddressEntity {
 
     @Column(name = "longitude", nullable = false)
     private String longitude;
+
+    public AddressEntity(AddressDto addressDto) {
+        BeanUtils.copyProperties(addressDto, this);
+    }
+
+    public AddressEntity() {
+
+    }
 
     public UUID getIdAddress() {
         return idAddress;

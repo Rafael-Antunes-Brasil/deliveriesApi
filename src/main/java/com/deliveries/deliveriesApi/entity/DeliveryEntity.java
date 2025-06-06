@@ -3,11 +3,11 @@ package com.deliveries.deliveriesApi.entity;
 import java.util.Date;
 import java.util.UUID;
 
-import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UuidGenerator;
 import org.springframework.beans.BeanUtils;
 
 import com.deliveries.deliveriesApi.dto.DeliveryDto;
-import com.deliveries.deliveriesApi.enums.StatusEntrega;
+import com.deliveries.deliveriesApi.enums.DeliveryStatus;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,7 +23,7 @@ public class DeliveryEntity {
 
     @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @UuidGenerator
     @Column(name = "id_delivery", updatable = false, nullable = false)
     private UUID idDelivery;
 
@@ -32,7 +32,7 @@ public class DeliveryEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status_entrega")
-    private StatusEntrega status;
+    private DeliveryStatus status;
 
     @Column(name = "date_create")
     private Date dateCreate;
@@ -52,6 +52,12 @@ public class DeliveryEntity {
     public DeliveryEntity(DeliveryDto deliveryDto) {
         BeanUtils.copyProperties(deliveryDto, this);
     }
+
+    // public static DeliveryEntity fromDto(DeliveryDto dto) {
+    //     DeliveryEntity entity = new DeliveryEntity();
+    //     BeanUtils.copyProperties(dto, entity);
+    //     return entity;
+    // }
 
     public DeliveryEntity() {
 
@@ -73,11 +79,11 @@ public class DeliveryEntity {
         this.orderId = orderId;
     }
 
-    public StatusEntrega getStatus() {
+    public DeliveryStatus getStatus() {
         return status;
     }
 
-    public void setStatus(StatusEntrega status) {
+    public void setStatus(DeliveryStatus status) {
         this.status = status;
     }
 

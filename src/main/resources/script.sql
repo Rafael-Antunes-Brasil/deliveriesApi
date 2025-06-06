@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS del_delivery (
 
     @Enumerated(EnumType.STRING) // Salva como texto no banco (PENDENTE, etc.)
     @Column
-    private StatusEntrega status;
+    private DeliveryStatus status;
 
 
 -- CREATE TABLE IF NOT EXISTS funcionario (

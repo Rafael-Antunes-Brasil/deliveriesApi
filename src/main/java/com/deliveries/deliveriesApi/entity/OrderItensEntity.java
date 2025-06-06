@@ -3,7 +3,7 @@ package com.deliveries.deliveriesApi.entity;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UuidGenerator;
 import org.springframework.beans.BeanUtils;
 
 import com.deliveries.deliveriesApi.dto.OrderItensDto;
@@ -22,7 +22,7 @@ public class OrderItensEntity {
 
     @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @UuidGenerator
     @Column(name = "id_order_item", updatable = false, nullable = false)
     private UUID idOrderItem;
 

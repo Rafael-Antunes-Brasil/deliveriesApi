@@ -2,7 +2,7 @@ package com.deliveries.deliveriesApi.entity;
 
 import java.util.UUID;
 
-import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UuidGenerator;
 import org.springframework.beans.BeanUtils;
 
 import com.deliveries.deliveriesApi.dto.DelivererDto;
@@ -21,7 +21,7 @@ public class DelivererEntity {
 
     @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @UuidGenerator
     @Column(name = "id_deliverer", updatable = false, nullable = false)
     private UUID idDeliverer;
 
